@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=fitrecs
+      - POSTGRES_PASSWORD=fitrecs123
+      - POSTGRES_DB=fitrecs
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/backend
+      - ./data:/backend/data
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://fitrecs:fitrecs123@db:5432/fitrecs
+      - REDIS_URL=redis://redis:6379
+      - SECRET_KEY=changeme123inproduction
+      - PYTHONPATH=/backend
+    depends_on:
+      - db
+      - redis
+    command: >
+      /bin/sh -c "
+        echo 'Waiting for database...' &&
+        sleep 5 &&
+        python -m scripts.seed_db &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      "
+
+volumes:
+  postgres_data:
+  redis_data:

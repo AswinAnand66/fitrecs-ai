@@ -1,0 +1,11 @@
+title,type,description,tags,duration,difficulty,media_url
+"HIIT Full Body Blast","workout","High-intensity interval training for total body conditioning","[""hiit"", ""cardio"", ""strength""]",30,"intermediate","https://example.com/videos/hiit-blast"
+"Beginner Yoga Flow","workout","Gentle yoga sequence perfect for beginners","[""yoga"", ""flexibility"", ""beginner""]",45,"beginner","https://example.com/videos/beginner-yoga"
+"Nutrition Guide for Athletes","article","Comprehensive guide to proper nutrition for peak performance","[""nutrition"", ""diet"", ""performance""]",20,"intermediate",null
+"Advanced Core Workout","workout","Intense core strengthening routine for experienced fitness enthusiasts","[""core"", ""strength"", ""abs""]",20,"advanced","https://example.com/videos/core-advanced"
+"Mindful Meditation","video","Guided meditation session for stress relief and mental clarity","[""meditation"", ""mindfulness"", ""wellness""]",15,"beginner","https://example.com/videos/meditation"
+"Bodyweight Basics","workout","No-equipment workout using just your body weight","[""bodyweight"", ""strength"", ""home""]",25,"beginner","https://example.com/videos/bodyweight"
+"Pro Running Tips","article","Expert advice for improving your running form and speed","[""running"", ""cardio"", ""technique""]",15,"advanced",null
+"Power Yoga Flow","workout","Dynamic yoga sequence for strength and flexibility","[""yoga"", ""strength"", ""power""]",60,"intermediate","https://example.com/videos/power-yoga"
+"Meal Prep 101","video","Step-by-step guide to weekly meal preparation","[""nutrition"", ""meal-prep"", ""cooking""]",30,"beginner","https://example.com/videos/meal-prep"
+"CrossFit WOD","workout","Challenging CrossFit workout of the day","[""crossfit"", ""strength"", ""hiit""]",40,"advanced","https://example.com/videos/crossfit"
