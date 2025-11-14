@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+app/venv/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Packaging
+*.egg-info/
+dist/
+build/
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Python testing
+.pytest_cache/
+
+# Database
+dev.db

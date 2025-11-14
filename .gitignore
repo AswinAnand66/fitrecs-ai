@@ -1,0 +1,50 @@
+# Root-level gitignore for the whole project
+
+# Node / frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+backend/venv/
+app/venv/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Testing
+.pytest_cache/
+coverage/
+
+# Databases
+*.db
+*.sqlite3
+dev.db
+backend/fitrecs.db
+
+# Misc
+*.egg-info/
+dist/
+build/

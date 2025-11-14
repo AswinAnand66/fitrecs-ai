@@ -2,13 +2,13 @@ from typing import List, Optional, Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from ..core.config import settings
-from ..core.security import get_current_active_user
-from ..db.session import get_db
-from ..db.models import User, Item, Interaction
-from ..schemas.item import ItemWithSimilarity
-from ..services.recommender import recommender
-from ..services.indexer import indexer_service
+from app.core.config import settings
+from app.core.security import get_current_active_user
+from app.db.session import get_db
+from app.db.models import User, Item, Interaction
+from app.schemas.item import ItemWithSimilarity
+from app.services.recommender import recommender
+from app.services.indexer import indexer_service
 
 router = APIRouter()
 

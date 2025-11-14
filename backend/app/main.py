@@ -1,15 +1,20 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .core.config import settings
-from .api import auth, items, recommend, interactions
-from .db.session import init_db
+from app.core.config import settings
+from app.api.v1.api import api_router
+from app.db.init_db import init_db
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    openapi_url=f"{settings.API_V1_STR}/openapi.json"
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    debug=True
 )
+
+# Configure logging
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 # Set CORS middleware
 app.add_middleware(
@@ -20,27 +25,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize API routers
-app.include_router(
-    auth.router,
-    prefix=f"{settings.API_V1_STR}/auth",
-    tags=["auth"]
-)
-app.include_router(
-    items.router,
-    prefix=f"{settings.API_V1_STR}/items",
-    tags=["items"]
-)
-app.include_router(
-    recommend.router,
-    prefix=f"{settings.API_V1_STR}/recommend",
-    tags=["recommend"]
-)
-app.include_router(
-    interactions.router,
-    prefix=f"{settings.API_V1_STR}/interactions",
-    tags=["interactions"]
-)
+# Include API router
+app.include_router(api_router, prefix=settings.API_V1_STR)
 
 # Initialize database on startup
 @app.on_event("startup")

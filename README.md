@@ -48,6 +48,132 @@ The system uses a hybrid recommendation approach:
 - Tailwind CSS + Material UI
 - Axios
 
+## Development Setup
+
+### Prerequisites
+
+1. Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+2. Install [Visual Studio Code](https://code.visualstudio.com/)
+3. Get an [OpenAI API key](https://platform.openai.com/) for AI features
+
+### Environment Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AswinAnand66/fitrecs-ai.git
+   cd fitrecs-ai
+   ```
+
+2. Copy example environment files:
+   ```bash
+   cp .env.example .env  # Docker Compose environment
+   cp backend/.env.example backend/.env  # Backend environment
+   cp frontend/.env.example frontend/.env  # Frontend environment
+   ```
+
+3. Configure environment variables:
+   - Add your OpenAI API key to `.env`
+   - Update other variables if needed in `backend/.env` and `frontend/.env`
+
+### Running with Docker Compose
+
+1. Build and start all services:
+   ```bash
+   docker-compose up --build
+   ```
+
+2. Access the services:
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+   - Admin Dashboard: http://localhost:5173/admin
+
+### Local Development Setup
+
+#### Backend (Python 3.10+)
+
+1. Create and activate virtual environment:
+   ```bash
+   cd backend
+   python -m venv venv
+   # Windows
+   .\venv\Scripts\activate
+   # Unix/macOS
+   source venv/bin/activate
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run development server:
+   ```bash
+   uvicorn app.main:app --reload --log-level debug
+   ```
+
+#### Frontend (Node.js 18+)
+
+1. Install dependencies:
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
+
+### Testing
+
+1. Backend tests:
+   ```bash
+   cd backend
+   pytest -v
+   ```
+
+2. Frontend tests:
+   ```bash
+   cd frontend
+   npm test
+   ```
+
+### Code Quality
+
+1. Backend:
+   - Formatting: `black .`
+   - Linting: `flake8`
+   - Type checking: `mypy .`
+
+2. Frontend:
+   - Formatting: `npm run format`
+   - Linting: `npm run lint`
+   - Type checking: `npm run typecheck`
+
+### Troubleshooting Common Issues
+
+1. Database Connection Issues
+   - Check PostgreSQL logs: `docker-compose logs db`
+   - Verify database credentials in `backend/.env`
+   - Ensure database migrations are up to date
+
+2. Redis Connection Issues
+   - Check Redis logs: `docker-compose logs redis`
+   - Verify Redis connection URL in environment variables
+
+3. AI Features Not Working
+   - Check OpenAI API key in `.env`
+   - Verify `AI_FEATURES_ENABLED=true` in environment
+   - Check backend logs for API rate limits
+
+4. Frontend API Connection
+   - Verify backend URL in `frontend/.env`
+   - Check CORS settings in backend
+   - Monitor browser developer tools network tab
+
+For detailed instructions and additional topics, check the [project wiki](https://github.com/AswinAnand66/fitrecs-ai/wiki).
+
 ## API Endpoints
 
 ### Authentication
